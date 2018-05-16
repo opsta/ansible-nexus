@@ -1,0 +1,19 @@
+---
+- name: Create Nexus Systemd Unit file
+  template:
+    src: nexus.service.j2
+    dest: /lib/systemd/system/nexus.service
+    mode: 0644
+  register: nexus_systemd
+
+- name: Ensure Nexus started and enabled
+  systemd:
+    name: nexus
+    state: started
+    daemon_reload: yes
+
+- name: Configure Nexus
+  template:
+    src: nexus.properties.j2
+    dest: "{{ nexus_config_file_path }}"
+  notify: Restart Nexus

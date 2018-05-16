@@ -1,0 +1,11 @@
+[Unit]
+Description=nexus service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart={{ nexus_service_file_path }} start
+ExecStop={{ nexus_service_file_path }} stop
+User={{ nexus_user }}
+Group={{ nexus_group }}
+Restart=always

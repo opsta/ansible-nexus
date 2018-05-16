@@ -1,0 +1,11 @@
+---
+- name: Add Nexus Group
+  group:
+    name: "{{ nexus_group }}"
+
+- name: Add Nexus User
+  user:
+    name: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"
+    shell: /bin/bash
+    home: "{{ nexus_install_dir }}"

@@ -1,0 +1,8 @@
+---
+- include_tasks: nexus_pre.yml
+- include_tasks: nexus_install.yml
+
+- block: # Config Nexus
+  - include_tasks: nexus_post.yml
+  tags:
+    - nexus-config
