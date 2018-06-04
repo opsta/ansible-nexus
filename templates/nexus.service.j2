@@ -9,3 +9,6 @@ ExecStop={{ nexus_service_file_path }} stop
 User={{ nexus_user }}
 Group={{ nexus_group }}
 Restart=always
+
+[Install]
+WantedBy=multi-user.target
