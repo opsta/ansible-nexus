@@ -13,6 +13,13 @@
     enabled: yes
     daemon_reload: yes
 
+- name: Configure VM Options
+  template:
+    src: nexus.vmoptions.j2
+    dest: "{{ nexus_config_vmoptions_file_path }}"
+  notify: Restart Nexus
+
+
 - name: Configure Nexus
   template:
     src: nexus.properties.j2
