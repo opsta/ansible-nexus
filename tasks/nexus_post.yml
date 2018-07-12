@@ -25,3 +25,12 @@
     src: nexus.properties.j2
     dest: "{{ nexus_config_file_path }}"
   notify: Restart Nexus
+
+- name: Install lsyncd (RedHat) (Optional)
+  yum:
+    name: https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/l/lsyncd-2.2.2-1.el7.x86_64.rpm
+    state: present
+  when:
+    - ansible_os_family == "RedHat"
+    - install_lsyncd is defined
+    - install_lsyncd

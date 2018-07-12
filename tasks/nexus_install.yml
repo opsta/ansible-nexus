@@ -14,7 +14,7 @@
     removes: "{{ nexus_install_tmp_dir }}"
 
 - name: Install Nexus Data
-  command: "shopt -s dotglob && mv {{ nexus_install_tmp_data_dir }} {{ nexus_data_dir }} && shopt -u dotglob"
+  command: "mv {{ nexus_install_tmp_data_dir }} {{ nexus_data_dir }}"
   args:
     creates: "{{ nexus_data_dir }}"
     removes: "{{ nexus_install_tmp_data_dir }}"
