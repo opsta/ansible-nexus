@@ -19,6 +19,10 @@
     dest: "{{ nexus_config_vmoptions_file_path }}"
   notify: Restart Nexus
 
+- name: Wait until Nexus config is created
+  wait_for:
+    path: "{{ nexus_config_file_path }}"
+    state: present
 
 - name: Configure Nexus
   template:
