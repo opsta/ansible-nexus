@@ -1,5 +1,5 @@
 ---
-nexus_version: 3.11.0-01
+nexus_version: 3.14.0-04
 nexus_download_url: "http://download.sonatype.com/nexus/3/nexus-{{ nexus_version }}-unix.tar.gz"
 nexus_install_tmp_base_dir: /tmp
 nexus_install_tmp_dir_name: "nexus-{{ nexus_version }}"
