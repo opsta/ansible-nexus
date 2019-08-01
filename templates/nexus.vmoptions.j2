@@ -1,6 +1,6 @@
--Xms1200M
--Xmx1200M
--XX:MaxDirectMemorySize=2G
+-Xms{{ nexus_vmoptions_xms }}
+-Xmx{{ nexus_vmoptions_xmx }}
+-XX:MaxDirectMemorySize={{ nexus_vmoptions_maxdirectmem }}
 -XX:+UnlockDiagnosticVMOptions
 -XX:+UnsyncloadClass
 -XX:+LogVMOutput

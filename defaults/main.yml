@@ -14,6 +14,11 @@ nexus_config_vmoptions_file_path: "{{ nexus_install_dir }}/bin/nexus.vmoptions"
 nexus_app_port: "8081"
 nexus_app_host: "0.0.0.0"
 
+# Example memory for 8GB host ref:https://help.sonatype.com/repomanager3/system-requirements#SystemRequirements-Memory
+nexus_vmoptions_xms: "2703M"
+nexus_vmoptions_xmx: "2703M"
+nexus_vmoptions_maxdirectmem: "2703M"
+
 nexus_user: nexus
 nexus_group: nexus
 
