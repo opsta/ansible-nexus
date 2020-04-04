@@ -38,3 +38,21 @@
     - ansible_os_family == "RedHat"
     - install_lsyncd is defined
     - install_lsyncd
+
+
+- name: Wait until initial admin password is appear
+  register: nexus_is_find_init_token
+  wait_for:
+    timeout: 60
+    path: "{{ nexus_admin_init_password_path }}"
+
+- name: Retry for expose initial password
+  when: not nexus_is_find_init_token.failed
+  block:
+    - name: Get initial admin password
+      command: "cat {{ nexus_admin_init_password_path }}"
+      register: nexus_initial_admin_password
+      changed_when: false
+    - name: Initial admin password is
+      debug:
+        msg: "{{ nexus_initial_admin_password.stdout }}"
