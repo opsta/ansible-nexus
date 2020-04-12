@@ -45,6 +45,7 @@
   wait_for:
     timeout: 60
     path: "{{ nexus_admin_init_password_path }}"
+  ignore_errors: yes
 
 - name: Retry for expose initial password
   when: not nexus_is_find_init_token.failed
