@@ -3,6 +3,9 @@ application-port={{ nexus_app_port }}
 application-host={{ nexus_app_host }}
 nexus-args=${jetty.etc}/jetty.xml,${jetty.etc}/jetty-http.xml,${jetty.etc}/jetty-requestlog.xml
 nexus-context-path=/
+{% if nexus_scripts_allow %}
+nexus.scripts.allowCreation=true
+{% endif %}
 
 # Nexus section
 nexus-edition=nexus-pro-edition
