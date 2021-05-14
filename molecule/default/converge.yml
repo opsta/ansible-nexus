@@ -1,0 +1,9 @@
+---
+- name: Run role
+  hosts: all
+  any_errors_fatal: true
+  become: true
+  become_method: su
+  roles:
+    - opsta.nexus 
+    
