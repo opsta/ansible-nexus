@@ -52,7 +52,7 @@
   block:
     - name: Get initial admin password
       ansible.builtin.command: "cat {{ nexus_admin_init_password_path }}"
-      register: nexus_initial_admin_password
+      ansible.builtin.register: nexus_initial_admin_password
       changed_when: false
     - name: Initial admin password is
       ansible.builtin.debug:
