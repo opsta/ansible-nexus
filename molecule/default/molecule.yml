@@ -106,7 +106,7 @@ provisioner:
     create: create.yml
     prepare: prepare.yml
     converge: converge.yml
-    # destroy: destroy.yml
+    destroy: destroy.yml
 scenario:
   name: default
 verifier:
