@@ -41,8 +41,8 @@
 
 
 - name: Wait until initial admin password is appear
-  ansible.builtin.register: nexus_is_find_init_token
-  wait_for:
+  register: nexus_is_find_init_token
+  ansible.builtin.wait_for:
     timeout: 60
     path: "{{ nexus_admin_init_password_path }}"
   ignore_errors: yes
@@ -51,9 +51,14 @@
   when: not nexus_is_find_init_token.failed
   block:
     - name: Get initial admin password
-      ansible.builtin.command: "cat {{ nexus_admin_init_password_path }}"
-      ansible.builtin.register: nexus_initial_admin_password
+      command: "cat {{ nexus_admin_init_password_path }}"
+      register: nexus_initial_admin_password
       changed_when: false
     - name: Initial admin password is
       ansible.builtin.debug:
         msg: "{{ nexus_initial_admin_password.stdout }}"
+#NOTE enable robot framework to read nexus initial admin password
+    # - name: Write admin password to File
+    #   ansible.builtin.copy:
+    #     content: "{{ nexus_initial_admin_password.stdout }}"
+    #     dest: /opt/admin_password.txt

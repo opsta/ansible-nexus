@@ -5,5 +5,5 @@
   become: true
   become_method: su
   roles:
-    - opsta.nexus 
+    - ansible-nexus 
     

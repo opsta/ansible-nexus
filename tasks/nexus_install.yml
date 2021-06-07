@@ -7,15 +7,15 @@
     creates: "{{ nexus_service_file_path }}"
 
 - name: Install Nexus
-  ansible.builtin.shell: "shopt -s dotglob && mv {{ nexus_install_tmp_dir }}/* {{ nexus_install_dir }} && shopt -u dotglob"
-  ansible.builtin.args:
-    executable: /bin/bash
+  shell: "shopt -s dotglob && mv {{ nexus_install_tmp_dir }}/* {{ nexus_install_dir }} && shopt -u dotglob"
+  args:
+    executable: /bin/bash 
     creates: "{{ nexus_install_dir }}/bin"
     removes: "{{ nexus_install_tmp_dir }}"
 
 - name: Install Nexus Data
-  ansible.builtin.command: "mv {{ nexus_install_tmp_data_dir }} {{ nexus_data_dir }}"
-  ansible.builtin.args:
+  command: "mv {{ nexus_install_tmp_data_dir }} {{ nexus_data_dir }}"
+  args:
     creates: "{{ nexus_data_dir }}"
     removes: "{{ nexus_install_tmp_data_dir }}"
 
