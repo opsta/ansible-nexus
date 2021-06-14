@@ -1,0 +1,31 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: true
+  become: true
+  become_method: su
+  pre_tasks: 
+    - name: add Java repository (Debian 10)
+      apt_repository:
+        repo: "deb http://security.debian.org/debian-security stretch/updates main"
+      when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "10")
+    
+    - name: Update apt cache (Debian 10)
+      apt: update_cache=true cache_valid_time=600
+      when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "10")
+      changed_when: false
+  roles:
+    - opsta.java 
+  #   - name: Install Java package (Ubuntu/Debian)
+  #     apt:
+  #       name: openjdk-8-jdk
+  #       state: present
+  #       update_cache: yes
+  #     when: ansible_os_family == 'Debian'
+
+  #   - name: Install Java package (CentOS/RHEL)
+  #     yum:
+  #       name: java-1.8.0-openjdk
+  #       state: present
+  #       update_cache: yes
+  #     when: ansible_os_family == 'RedHat'

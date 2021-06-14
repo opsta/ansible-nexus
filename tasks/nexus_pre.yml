@@ -1,10 +1,10 @@
 ---
 - name: Add Nexus Group
-  group:
+  ansible.builtin.group:
     name: "{{ nexus_group }}"
 
 - name: Add Nexus User
-  user:
+  ansible.builtin.user:
     name: "{{ nexus_user }}"
     group: "{{ nexus_group }}"
     shell: /bin/bash
