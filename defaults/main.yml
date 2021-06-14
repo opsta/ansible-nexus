@@ -22,8 +22,6 @@ nexus_vmoptions_maxdirectmem: "2703M"
 nexus_user: nexus
 nexus_group: nexus
 
-nexus_all_in_one: false
-
 nexus_admin_init_password_path: /opt/sonatype-work/nexus3/admin.password
 
 nexus_scripts_allow: false
